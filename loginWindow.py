@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
         MainWindow.setAutoFillBackground(False)
-        MainWindow.setStyleSheet("background-color: rgb(213, 219, 255);")
+        MainWindow.setStyleSheet("background-color: rgb(233, 235, 255);")
         MainWindow.setDocumentMode(False)
         MainWindow.setUnifiedTitleAndToolBarOnMac(False)
 
@@ -46,7 +46,6 @@ class Ui_MainWindow(object):
         self.loginEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.loginEdit.setText("")
         self.loginEdit.setFrame(False)
-        self.loginEdit.setObjectName("loginEdit")
 
         self.verticalLayout.addWidget(self.loginEdit)
 
@@ -55,7 +54,7 @@ class Ui_MainWindow(object):
         self.passwordEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.passwordEdit.setText("")
         self.passwordEdit.setFrame(False)
-        self.passwordEdit.setObjectName("passwordEdit")
+        self.passwordEdit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.verticalLayout.addWidget(self.passwordEdit)
 
         self.forgotButton = QtWidgets.QPushButton(self.widget)
