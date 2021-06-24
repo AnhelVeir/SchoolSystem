@@ -150,26 +150,20 @@ class Ui_MainWindow(object):
         self.tableWidget = QtWidgets.QTableWidget(self.class_decr)
         self.tableWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.tableWidget.setGeometry(QtCore.QRect(40, 110, 921, 411))
-        colCount = 10
+        colCount = 11
         self.tableWidget.setColumnCount(colCount)
         self.tableWidget.setHorizontalHeaderLabels(["Id", "Фамилия", "Имя", "Отчество",
                                                     "Пол", "Класс", "Номер",
                                                     "Номера родителей", "Адрес",
                                                     "Email", "Дата рождения"])
-        self.tableWidget.setRowCount(0)
-        rowPos = self.tableWidget.rowCount()
-        info = ["1", "Гайдомак", "Мария", "Олеговна", "Ж",
-                "9а", "89050342142",
-                "896576578435", "ул. Краснодарская 11",
-                "mary.gaidomak@gmail.com", "13-08-2002"]
-        self.add_row(rowPos, info)
+        # self.tableWidget.setRowCount(0)
 
         self.class_num_lock = QtWidgets.QLabel(self.class_decr)
         self.class_num_lock.setGeometry(QtCore.QRect(40, 30, 71, 16))
         self.class_num_lock.setFont(font_verdana_12)
 
         self.layoutWidget = QtWidgets.QWidget(self.class_decr)
-        self.layoutWidget.setGeometry(QtCore.QRect(40, 60, 541, 41))
+        self.layoutWidget.setGeometry(QtCore.QRect(40, 60, 700, 41))
         self.layoutWidget.setObjectName("layoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
@@ -186,6 +180,10 @@ class Ui_MainWindow(object):
 
         self.refresh_button = white_button(self.layoutWidget)
         self.horizontalLayout.addWidget(self.refresh_button)
+
+        self.download_button = white_button(self.layoutWidget)
+        self.download_button.setText("Скачать в формате excel")
+        self.horizontalLayout.addWidget(self.download_button)
 
 
 
@@ -213,12 +211,12 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
 
         self.list_of_pup = QtWidgets.QComboBox(self.document)
-        self.list_of_pup.setGeometry(QtCore.QRect(220, 110, 200, 25))
+        self.list_of_pup.setGeometry(QtCore.QRect(220, 110, 400, 25))
         self.list_of_pup.setFont(font)
         self.list_of_pup.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.list_of_pup.addItem("Item1")
-        self.list_of_pup.addItem("Item2")
-        self.list_of_pup.addItem("Item3")
+        # self.list_of_pup.addItem("Item1")
+        # self.list_of_pup.addItem("Item2")
+        # self.list_of_pup.addItem("Item3")
 
         self.enter_id_lock = QtWidgets.QLabel(self.document)
         self.enter_id_lock.setGeometry(QtCore.QRect(30, 105, 191, 31))
@@ -324,6 +322,7 @@ class Ui_MainWindow(object):
     def add_row(self, current_row, info):
         self.tableWidget.insertRow(current_row)
         for e, i in enumerate(info):
+            print(f"e {e} i {i}")
             item = QtWidgets.QTableWidgetItem(i)
             item.setFlags(QtCore.Qt.ItemIsEnabled)
             self.tableWidget.setItem(current_row, e, item)
@@ -333,9 +332,9 @@ class Ui_MainWindow(object):
         current_row = self.tableWidget.rowCount()
         self.tableWidget.insertRow(current_row)
         # Поле с id остается не заполненным  - будет автоматически присвоено базой данных
-        item = QtWidgets.QTableWidgetItem("")
-        item.setFlags(QtCore.Qt.ItemIsEnabled)
-        self.tableWidget.setItem(current_row, 0, item)
+        # item = QtWidgets.QTableWidgetItem("")
+        # item.setFlags(QtCore.Qt.ItemIsEnabled)
+        # self.tableWidget.setItem(current_row, 0, item)
 
     def save_row(self, colCount):
         current_row = self.tableWidget.rowCount()
