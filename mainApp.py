@@ -39,6 +39,7 @@ class Ui_MainWindow(object):
         font_verdana_12.setPointSize(12)
         font_verdana_12.setBold(True)
         font_verdana_12.setWeight(75)
+
         self.label_info_about_teacher_lock.setFont(font_verdana_12)
         self.label_info_about_teacher_lock.setObjectName("label_info_about_teacher_lock")
         self.surname_label_lock = QtWidgets.QLabel(self.profile)
@@ -79,7 +80,7 @@ class Ui_MainWindow(object):
         self.patronymic_label.setFont(font_verdana_12)
 
         self.email_label = QtWidgets.QLabel(self.profile)
-        self.email_label.setGeometry(QtCore.QRect(190, 160, 131, 16))
+        self.email_label.setGeometry(QtCore.QRect(190, 157, 250, 20))
         self.email_label.setFont(font_verdana_12)
 
         self.phone_label = QtWidgets.QLabel(self.profile)
@@ -345,6 +346,7 @@ class Ui_MainWindow(object):
                     print(self.tableWidget.item(i, l).text())
                     self.tableWidget.item(i, l).setFlags(QtCore.Qt.ItemIsEnabled)
         self.tableWidget.resizeColumnsToContents()
+
 
 
 

@@ -73,3 +73,26 @@ class PupilEducData:
     def get_data_like_list(self):
         final = [self.review_id, self.pup_id, self.year, self.sem] + self.marks
         return final
+
+from mysql.connector import connect, Error
+
+login = "snezhana"
+
+try:
+    with connect(
+            host="db4free.net",
+            user="maria_prog",
+            password="iTBFFA9ymsHh2",
+            port=3306,
+            database="school_bd"
+    ) as connection:
+        # print("SHOW DATABASES")
+        show_db_query = """SELECT * FROM users WHERE login = "{}" """.format(login)
+        print(show_db_query)
+        with connection.cursor() as cursor:
+            cursor.execute(show_db_query)
+            for db in cursor:
+                print(db)
+except Error as e:
+    print(e)
+
